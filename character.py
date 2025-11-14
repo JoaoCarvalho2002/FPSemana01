@@ -7,64 +7,51 @@
 #Defesa Raul 15
 
 #primeira pessoa encontrada se empatar
-nome1=input()
-str(nome1)
-ataque1=input()
-int(ataque1)
-defesa1=input()
-int(defesa1)
+nome1 = input()
+ataque1 = int(input())
+defesa1 = int(input())
 
-nome2=input()
-str(nome2)
-ataque2=input()
-int(ataque2)
-defesa2=input()
-int(defesa2)
+nome2 = input()
+ataque2 = int(input())
+defesa2 = int(input())
 
-nome3=input()
-str(nome3)
-ataque3=input()
-int(ataque3)
-defesa3=input()
-int(defesa3)
+nome3 = input()
+ataque3 = int(input())
+defesa3 = int(input())
 
 nomeoutputAta=""
 nomeoutputDef=""
 
 dados=[
-    [str(nome1),(int(ataque1),int(defesa1))],
-    [str(nome2),(int(ataque2),int(defesa2))],
-    [str(nome3),(int(ataque3),int(defesa3))]
+    [nome1,(ataque1,defesa1)],
+    [nome2,(ataque2,defesa2)],
+    [nome3,(ataque3,defesa3)]
 ]
-
-listAtaque=[ataque1,ataque2,ataque3]
-listAtaque.sort()
-
-listDefesa=[defesa1,defesa2,defesa3]
-listDefesa.sort()
-
 print(dados)
 
-
 #ataque
-if(dados[0][1][0]== int(listAtaque[-1])):
-    nomeoutputAta=(str(dados[0][0]))
+maior_ataque = max(ataque1, ataque2, ataque3)
 
-elif(dados[1][1][0]== int(listAtaque[-1])):
-    nomeoutputAta=(str(dados[1][0]))
+if dados[0][1][0] == maior_ataque:
+    nomeoutputAta = dados[0][0]
 
-elif(dados[2][1][0]== int(listAtaque[-1])):
-    nomeoutputAta=(str(dados[2][0])) 
+elif dados[1][1][0] == maior_ataque:
+    nomeoutputAta = dados[1][0]
 
-print("Ataque "+ nomeoutputAta ,listAtaque[-1]) 
-#defesa
-if(dados[0][1][1]== int(listDefesa[-1])):
-    nomeoutputDef=(str(dados[0][0]))
+else:
+    nomeoutputAta = dados[2][0]
 
-elif(dados[1][1][1]== int(listDefesa[-1])):
-    nomeoutputDef=(str(dados[1][0]))
+# defesa
+maior_defesa = max(defesa1, defesa2, defesa3)
 
-elif(dados[2][1][1]== int(listDefesa[-1])):
-    nomeoutputDef=(str(dados[2][0])) 
-     
-print("Defesa "+ nomeoutputDef ,listDefesa[-1])
+if dados[0][1][1] == maior_defesa:
+    nomeoutputDef = dados[0][0]
+
+elif dados[1][1][1] == maior_defesa:
+    nomeoutputDef = dados[1][0]
+
+else:
+    nomeoutputDef = dados[2][0]
+
+print("Ataque", nomeoutputAta, maior_ataque)
+print("Defesa", nomeoutputDef, maior_defesa)
